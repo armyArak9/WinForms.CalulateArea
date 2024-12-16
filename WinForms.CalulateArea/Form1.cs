@@ -26,7 +26,7 @@ namespace WinForms.CalulateArea
         private void btnCircleArea_Click(object sender, EventArgs e)
         {
 
-            //input รับค่าจาก txtRadius
+            
             double Radius = 0;
             //Radius = Convert.ToDouble(txtRedius.Text);
             if (double.TryParse(txtRedius.Text, out Radius) == false)
@@ -38,7 +38,7 @@ namespace WinForms.CalulateArea
             }
 
             //process คำนวณพื้นที่ สูตร pi*r*r
-            double CircleArea = Math.PI * Math.Pow(Radius, 2);
+            double CircleArea = CalculateCircleArea(Radius);
             //Math.PI ให้ค่า Pi
             //Math.Pow(x,y) x ยกกำลัง y
 
@@ -48,8 +48,21 @@ namespace WinForms.CalulateArea
             txtRedius.Focus();
             txtRedius.SelectAll();
         }
-
+        private double CalculateCircleArea(double radius)
+        {
+            return Math.PI * Math.Pow(radius, 2);
+        }
         private void btnTriangleArea_Click(object sender, EventArgs e)
+        {
+            CalculatebtnTriangleArea();
+        }
+
+        private void btnHexagonArea_Click(object sender, EventArgs e)
+        {
+            CalculatebtnHexagonArea();
+        }
+
+        private void CalculatebtnTriangleArea()
         {
             // ตรวจสอบค่าความสูง
             if (double.TryParse(txtHeight.Text, out double Height) == false)
@@ -80,9 +93,8 @@ namespace WinForms.CalulateArea
             txtHeight.SelectAll();
         }
 
-        private void btnHexagonArea_Click(object sender, EventArgs e)
+        private void CalculatebtnHexagonArea()
         {
-
             // ตรวจสอบค่าความยาวด้าน
             if (double.TryParse(txtHexagonWidth.Text, out double Width) == false)
             {
@@ -102,5 +114,6 @@ namespace WinForms.CalulateArea
             txtHexagonWidth.Focus();
             txtHexagonWidth.SelectAll();
         }
+
     }
 }
